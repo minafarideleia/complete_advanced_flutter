@@ -27,8 +27,21 @@ ThemeData getApplicationTheme() {
           elevation: AppSize.s4,
           shadowColor: ColorManager.primaryOpacity70,
           titleTextStyle: getRegularStyle(
-              color: ColorManager.white, fontSize: FontSize.s16))
+              color: ColorManager.white, fontSize: FontSize.s16)),
       // Button theme
+      buttonTheme: ButtonThemeData(
+          shape: StadiumBorder(),
+          disabledColor: ColorManager.grey1,
+          buttonColor: ColorManager.primary,
+          splashColor: ColorManager.primaryOpacity70),
+
+      // elevated button theme
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              textStyle: getRegularStyle(color: ColorManager.white),
+              primary: ColorManager.primary,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppSize.s12)))),
 
       // Text theme
 
