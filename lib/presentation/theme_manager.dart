@@ -44,13 +44,46 @@ ThemeData getApplicationTheme() {
                   borderRadius: BorderRadius.circular(AppSize.s12)))),
 
       // Text theme
-textTheme: TextTheme(
-    headline1: getSemiBoldStyle(color: ColorManager.darkGrey,fontSize: FontSize.s16),
-    subtitle1: getMediumStyle(color: ColorManager.lightGrey,fontSize: FontSize.s14),
-    caption: getRegularStyle(color: ColorManager.grey1),
-    bodyText1: getRegularStyle(color: ColorManager.grey)
-)
+      textTheme: TextTheme(
+          headline1: getSemiBoldStyle(
+              color: ColorManager.darkGrey, fontSize: FontSize.s16),
+          subtitle1: getMediumStyle(
+              color: ColorManager.lightGrey, fontSize: FontSize.s14),
+          caption: getRegularStyle(color: ColorManager.grey1),
+          bodyText1: getRegularStyle(color: ColorManager.grey)),
       // input decoration theme (text form field)
 
-      );
+      inputDecorationTheme: InputDecorationTheme(
+        contentPadding: EdgeInsets.all(AppPadding.p8),
+        // hint style
+        hintStyle: getRegularStyle(color: ColorManager.grey1),
+
+        // label style
+        labelStyle: getMediumStyle(color: ColorManager.darkGrey),
+        // error style
+        errorStyle: getRegularStyle(color: ColorManager.error),
+
+        // enabled border
+        enabledBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: ColorManager.grey, width: AppSize.s1_5),
+            borderRadius: BorderRadius.all(Radius.circular(AppSize.s8))),
+
+        // focused border
+        focusedBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
+            borderRadius: BorderRadius.all(Radius.circular(AppSize.s8))),
+
+        // error border
+        errorBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: ColorManager.error, width: AppSize.s1_5),
+            borderRadius: BorderRadius.all(Radius.circular(AppSize.s8))),
+        // focused error border
+        focusedErrorBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
+            borderRadius: BorderRadius.all(Radius.circular(AppSize.s8))),
+      ));
 }
