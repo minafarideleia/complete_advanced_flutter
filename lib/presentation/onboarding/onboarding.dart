@@ -95,6 +95,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             },
           ),),
 
+
         // circles indicator
         Row(
           children: [
