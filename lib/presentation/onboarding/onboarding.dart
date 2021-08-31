@@ -1,5 +1,6 @@
 import 'package:complete_advanced_flutter/presentation/resources/assets_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/color_manager.dart';
+import 'package:complete_advanced_flutter/presentation/resources/routes_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/strings_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/values_manager.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,8 +21,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   PageController _pageController = PageController(initialPage: 0);
   int _currentIndex = 0;
 
-  List<SliderObject> _getSliderData() =>
-      [
+  List<SliderObject> _getSliderData() => [
         SliderObject(AppStrings.onBoardingSubTitle1,
             AppStrings.onBoardingSubTitle1, ImageAssets.onboardingLogo1),
         SliderObject(AppStrings.onBoardingSubTitle2,
@@ -64,7 +64,10 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, Routes.loginRoute);
+
+                  },
                   child: Text(
                     AppStrings.skip,
                     textAlign: TextAlign.end,
@@ -83,7 +86,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         // left arrow
-        Padding(padding: EdgeInsets.all(AppPadding.p14),
+        Padding(
+          padding: EdgeInsets.all(AppPadding.p14),
           child: GestureDetector(
             child: SizedBox(
               height: AppSize.s20,
@@ -91,22 +95,28 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               child: SvgPicture.asset(ImageAssets.leftArrowIc),
             ),
             onTap: () {
-              // go to next slide
+              // go to previous slide
+              _pageController.animateToPage(_getPreviousIndex(),
+                  duration: Duration(milliseconds: DurationConstant.d300),
+                  curve: Curves.bounceInOut);
             },
-          ),),
-
+          ),
+        ),
 
         // circles indicator
         Row(
           children: [
-            for(int i = 0; i < _list.length; i++)
-              Padding(padding: EdgeInsets.all(AppPadding.p8),
-                child: _getProperCircle(i),)
+            for (int i = 0; i < _list.length; i++)
+              Padding(
+                padding: EdgeInsets.all(AppPadding.p8),
+                child: _getProperCircle(i),
+              )
           ],
         ),
 
         // right arrow
-        Padding(padding: EdgeInsets.all(AppPadding.p14),
+        Padding(
+          padding: EdgeInsets.all(AppPadding.p14),
           child: GestureDetector(
             child: SizedBox(
               height: AppSize.s20,
@@ -115,15 +125,37 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             ),
             onTap: () {
               // go to next slide
+              _pageController.animateToPage(_getNextIndex(),
+                  duration: Duration(milliseconds: DurationConstant.d300),
+                  curve: Curves.bounceInOut);
             },
-          ),)
+          ),
+        )
       ],
     );
   }
-  Widget _getProperCircle(int index){
-    if(index == _currentIndex){
+
+  int _getPreviousIndex() {
+    int previousIndex = _currentIndex--; // -1
+    if (previousIndex == -1) {
+      _currentIndex =
+          _list.length - 1; // infinite loop to go to the length of slider list
+    }
+    return _currentIndex;
+  }
+
+  int _getNextIndex() {
+    int nextIndex = _currentIndex++; // +1
+    if (nextIndex >= _list.length) {
+      _currentIndex = 0; // infinite loop to go to first item inside the slider
+    }
+    return _currentIndex;
+  }
+
+  Widget _getProperCircle(int index) {
+    if (index == _currentIndex) {
       return SvgPicture.asset(ImageAssets.hollowCircleIc); // selected slider
-    }else{
+    } else {
       return SvgPicture.asset(ImageAssets.solidCircleIc); // unselected slider
     }
   }
@@ -145,10 +177,7 @@ class OnBoardingPage extends StatelessWidget {
           child: Text(
             _sliderObject.title,
             textAlign: TextAlign.center,
-            style: Theme
-                .of(context)
-                .textTheme
-                .headline1,
+            style: Theme.of(context).textTheme.headline1,
           ),
         ),
         Padding(
@@ -156,10 +185,7 @@ class OnBoardingPage extends StatelessWidget {
           child: Text(
             _sliderObject.subTitle,
             textAlign: TextAlign.center,
-            style: Theme
-                .of(context)
-                .textTheme
-                .subtitle1,
+            style: Theme.of(context).textTheme.subtitle1,
           ),
         ),
         SizedBox(

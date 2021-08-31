@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="14.142" height="19" viewBox="0 0 14.142 19">
-  <g id="Group_2845" data-name="Group 2845" transform="translate(4.381)">
-    <path id="chevron" d="M8,0V8H0v2H10V0Z" transform="translate(9.761 9.353) rotate(135)" fill="#fff"/>
-    <rect id="Rectangle_1847" data-name="Rectangle 1847" width="5" height="19" transform="translate(0.313)" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="14.133" height="17.595" viewBox="0 0 14.133 17.595">
+  <g id="Group_2845" data-name="Group 2845" transform="matrix(0.999, 0.035, -0.035, 0.999, 4.571, -0.014)">
+    <path id="chevron" d="M10,8H2V0H0V10H10Z" transform="translate(2.798 1.548) rotate(45)" fill="#fff"/>
+    <rect id="Rectangle_1847" data-name="Rectangle 1847" width="4.808" height="17.438" transform="translate(0.394)" fill="none"/>
   </g>
 </svg>
