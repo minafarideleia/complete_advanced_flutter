@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({Key? key}) : super(key: key);
@@ -19,7 +20,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   PageController _pageController = PageController(initialPage: 0);
   int _currentIndex = 0;
 
-  List<SliderObject> _getSliderData() => [
+  List<SliderObject> _getSliderData() =>
+      [
         SliderObject(AppStrings.onBoardingSubTitle1,
             AppStrings.onBoardingSubTitle1, ImageAssets.onboardingLogo1),
         SliderObject(AppStrings.onBoardingSubTitle2,
@@ -69,10 +71,61 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   ),
                 )),
             // add layout for indicator and arrows
+            _getBottomSheetWidget()
           ],
         ),
       ),
     );
+  }
+
+  Widget _getBottomSheetWidget() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        // left arrow
+        Padding(padding: EdgeInsets.all(AppPadding.p14),
+          child: GestureDetector(
+            child: SizedBox(
+              height: AppSize.s20,
+              width: AppSize.s20,
+              child: SvgPicture.asset(ImageAssets.leftArrowIc),
+            ),
+            onTap: () {
+              // go to next slide
+            },
+          ),),
+
+
+        // circles indicator
+        Row(
+          children: [
+            for(int i = 0; i < _list.length; i++)
+              Padding(padding: EdgeInsets.all(AppPadding.p8),
+                child: _getProperCircle(i),)
+          ],
+        ),
+
+        // right arrow
+        Padding(padding: EdgeInsets.all(AppPadding.p14),
+          child: GestureDetector(
+            child: SizedBox(
+              height: AppSize.s20,
+              width: AppSize.s20,
+              child: SvgPicture.asset(ImageAssets.rightarrowIc),
+            ),
+            onTap: () {
+              // go to next slide
+            },
+          ),)
+      ],
+    );
+  }
+  Widget _getProperCircle(int index){
+    if(index == _currentIndex){
+      return SvgPicture.asset(ImageAssets.hollowCircleIc); // selected slider
+    }else{
+      return SvgPicture.asset(ImageAssets.solidCircleIc); // unselected slider
+    }
   }
 }
 
@@ -92,7 +145,10 @@ class OnBoardingPage extends StatelessWidget {
           child: Text(
             _sliderObject.title,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headline1,
+            style: Theme
+                .of(context)
+                .textTheme
+                .headline1,
           ),
         ),
         Padding(
@@ -100,7 +156,10 @@ class OnBoardingPage extends StatelessWidget {
           child: Text(
             _sliderObject.subTitle,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme
+                .of(context)
+                .textTheme
+                .subtitle1,
           ),
         ),
         SizedBox(
