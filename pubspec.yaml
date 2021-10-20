@@ -32,6 +32,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   dartz: ^0.10.0
+  data_connection_checker: ^0.3.4
 
 dev_dependencies:
   flutter_test:
