@@ -3,8 +3,8 @@ import 'package:complete_advanced_flutter/data/network/error_handler.dart';
 import 'package:complete_advanced_flutter/data/network/failure.dart';
 import 'package:complete_advanced_flutter/data/network/network_info.dart';
 import 'package:complete_advanced_flutter/data/request/request.dart';
-import 'package:complete_advanced_flutter/domain/model.dart';
-import 'package:complete_advanced_flutter/domain/repository.dart';
+import 'package:complete_advanced_flutter/domain/model/model.dart';
+import 'package:complete_advanced_flutter/domain/repository/repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:complete_advanced_flutter/data/mapper/mapper.dart';
 
