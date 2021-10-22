@@ -35,6 +35,7 @@ dependencies:
   data_connection_checker: ^0.3.4
   pretty_dio_logger: ^1.2.0-beta-1
   shared_preferences: ^2.0.8
+  device_info: ^2.0.2
 
 dev_dependencies:
   flutter_test:
