@@ -9,6 +9,8 @@ class LoginViewModel extends BaseViewModel
   StreamController _passwordStreamController =
       StreamController<String>.broadcast();
 
+  var loginObject = LoginObject("","");
+
   // inputs
   @override
   void dispose() {
@@ -35,14 +37,12 @@ class LoginViewModel extends BaseViewModel
 
   @override
   setPassword(String password) {
-    // TODO: implement setPassword
-    throw UnimplementedError();
+    inputPassword.add(password);
   }
 
   @override
   setUserName(String userName) {
-    // TODO: implement setUserName
-    throw UnimplementedError();
+    inputUserName.add(userName);
   }
 
   // outputs
