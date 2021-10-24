@@ -88,7 +88,18 @@ class _LoginViewState extends State<LoginView> {
                         ),
                       );
                     },
-                  ),)
+                  ),),
+                SizedBox(height: AppSize.s28),
+                Padding(padding: EdgeInsets.only(
+                    left: AppPadding.p28, right: AppPadding.p28),
+                    child: StreamBuilder(
+                      stream: // todo add me later,
+                      , builder: (context, snapshot) {
+                      return ElevatedButton(
+                          onPressed: () {}, child: Text(AppStrings.login))
+                    },
+                    )
+                )
               ],
             ),
           ),
