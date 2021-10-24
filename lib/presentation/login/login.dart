@@ -15,7 +15,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   LoginViewModel _viewModel =
-  LoginViewModel(null); // todo pass here login useCase
+      LoginViewModel(null); // todo pass here login useCase
 
   TextEditingController _userNameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -37,7 +37,7 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return _getContentWidget();
   }
 
   Widget _getContentWidget() {
@@ -50,10 +50,11 @@ class _LoginViewState extends State<LoginView> {
             key: _formKey,
             child: Column(
               children: [
-                SvgPicture.asset(ImageAssets.loginIc),
+                Image(image: AssetImage(ImageAssets.splashLogo)),
                 SizedBox(height: AppSize.s28),
-                Padding(padding: EdgeInsets.only(
-                    left: AppPadding.p28, right: AppPadding.p28),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: AppPadding.p28, right: AppPadding.p28),
                   child: StreamBuilder<bool>(
                     stream: _viewModel.outputIsUserNameValid,
                     builder: (context, snapshot) {
@@ -65,14 +66,15 @@ class _LoginViewState extends State<LoginView> {
                             labelText: AppStrings.username,
                             errorText: (snapshot.data ?? true)
                                 ? null
-                                : AppStrings.usernameError
-                        ),
+                                : AppStrings.usernameError),
                       );
                     },
-                  ),),
+                  ),
+                ),
                 SizedBox(height: AppSize.s28),
-                Padding(padding: EdgeInsets.only(
-                    left: AppPadding.p28, right: AppPadding.p28),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: AppPadding.p28, right: AppPadding.p28),
                   child: StreamBuilder<bool>(
                     stream: _viewModel.outputIsPasswordValid,
                     builder: (context, snapshot) {
@@ -84,31 +86,33 @@ class _LoginViewState extends State<LoginView> {
                             labelText: AppStrings.password,
                             errorText: (snapshot.data ?? true)
                                 ? null
-                                : AppStrings.passwordError
-                        ),
+                                : AppStrings.passwordError),
                       );
                     },
-                  ),),
+                  ),
+                ),
                 SizedBox(height: AppSize.s28),
-                Padding(padding: EdgeInsets.only(
-                    left: AppPadding.p28, right: AppPadding.p28),
+                Padding(
+                    padding: EdgeInsets.only(
+                        left: AppPadding.p28, right: AppPadding.p28),
                     child: StreamBuilder<bool>(
-                      stream: _viewModel.outputIsAllInputsValid
-                      , builder: (context, snapshot) {
-                      return ElevatedButton(
-                          onPressed: (snapshot.data ?? false)
-                              ? () {
-                            _viewModel.login();
-                          } : null, child: Text(AppStrings.login));
-                    },
-                    )
-                )
+                      stream: _viewModel.outputIsAllInputsValid,
+                      builder: (context, snapshot) {
+                        return ElevatedButton(
+                            onPressed: (snapshot.data ?? false)
+                                ? () {
+                                    _viewModel.login();
+                                  }
+                                : null,
+                            child: Text(AppStrings.login));
+                      },
+                    ))
               ],
             ),
           ),
         ),
       ),
-    )
+    );
   }
 
   @override
