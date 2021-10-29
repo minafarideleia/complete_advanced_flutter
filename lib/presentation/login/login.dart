@@ -1,8 +1,4 @@
 import 'package:complete_advanced_flutter/app/di.dart';
-import 'package:complete_advanced_flutter/data/data_source/remote_data_source.dart';
-import 'package:complete_advanced_flutter/data/repository/repository_impl.dart';
-import 'package:complete_advanced_flutter/domain/repository/repository.dart';
-import 'package:complete_advanced_flutter/domain/usecase/login_usecase.dart';
 import 'package:complete_advanced_flutter/presentation/login/login_viewmodel.dart';
 import 'package:complete_advanced_flutter/presentation/resources/assets_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/color_manager.dart';
@@ -10,7 +6,6 @@ import 'package:complete_advanced_flutter/presentation/resources/routes_manager.
 import 'package:complete_advanced_flutter/presentation/resources/strings_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
