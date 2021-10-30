@@ -38,4 +38,39 @@ class StateRenderer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container();
   }
+
+  Widget _getStateWidget() {
+    switch (stateRendererType) {
+      case StateRendererType.POPUP_LOADING_STATE:
+        // TODO: Handle this case.
+        break;
+      case StateRendererType.POPUP_ERROR_STATE:
+        // TODO: Handle this case.
+        break;
+      case StateRendererType.FULL_SCREEN_LOADING_STATE:
+        _getItemsInColumn()
+        break;
+      case StateRendererType.FULL_SCREEN_ERROR_STATE:
+        // TODO: Handle this case.
+        break;
+      case StateRendererType.CONTENT_SCREEN_STATE:
+        // TODO: Handle this case.
+        break;
+      case StateRendererType.EMPTY_SCREEN_STATE:
+        // TODO: Handle this case.
+        break;
+      default:
+        Container();
+    }
+  }
+
+  Widget _getItemsInColumn(List<Widget> children){
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: children,
+      ),
+    );
+  }
 }
