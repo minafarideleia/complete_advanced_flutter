@@ -1,3 +1,4 @@
+import 'package:complete_advanced_flutter/data/mapper/mapper.dart';
 import 'package:complete_advanced_flutter/presentation/common/state_renderer/state_renderer.dart';
 import 'package:complete_advanced_flutter/presentation/resources/strings_manager.dart';
 
@@ -21,4 +22,46 @@ class LoadingState extends FlowState {
 
   @override
   StateRendererType getStateRendererType() => stateRendererType;
+}
+
+// error state (POPUP, FULL LOADING)
+class ErrorState extends FlowState {
+  StateRendererType stateRendererType;
+  String message;
+
+  ErrorState(this.stateRendererType, this.message);
+
+  @override
+  String getMessage() => message;
+
+  @override
+  StateRendererType getStateRendererType() => stateRendererType;
+}
+
+// CONTENT STATE
+
+class ContentState extends FlowState {
+  ContentState();
+
+  @override
+  String getMessage() => EMPTY;
+
+  @override
+  StateRendererType getStateRendererType() =>
+      StateRendererType.CONTENT_SCREEN_STATE;
+}
+
+// EMPTY STATE
+
+class EmptyState extends FlowState {
+  String message;
+
+  EmptyState(this.message);
+
+  @override
+  String getMessage() => message;
+
+  @override
+  StateRendererType getStateRendererType() =>
+      StateRendererType.EMPTY_SCREEN_STATE;
 }
