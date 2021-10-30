@@ -45,10 +45,11 @@ class StateRenderer extends StatelessWidget {
   Widget _getStateWidget(BuildContext context) {
     switch (stateRendererType) {
       case StateRendererType.POPUP_LOADING_STATE:
-        return _getPopUpDialog(context)
+        return _getPopUpDialog(context, [_getAnimatedImage()]);
       case StateRendererType.POPUP_ERROR_STATE:
-      // TODO: Handle this case.
-        break;
+        return _getPopUpDialog(context, [ _getAnimatedImage(),
+          _getMessage(failure.message),
+          _getRetryButton(AppStrings.ok, context)]);
       case StateRendererType.FULL_SCREEN_LOADING_STATE:
         return _getItemsInColumn([_getAnimatedImage(), _getMessage(message)]);
       case StateRendererType.FULL_SCREEN_ERROR_STATE:
@@ -59,15 +60,15 @@ class StateRenderer extends StatelessWidget {
               _getRetryButton(AppStrings.retry_again, context)
             ]);
       case StateRendererType.CONTENT_SCREEN_STATE:
-        break;
+        return Container();
       case StateRendererType.EMPTY_SCREEN_STATE:
         return _getItemsInColumn([_getAnimatedImage(), _getMessage(message)]);
       default:
-        Container();
+        return Container();
     }
   }
 
-  Widget _getPopUpDialog(BuildContext context) {
+  Widget _getPopUpDialog(BuildContext context, List<Widget> children) {
     return Dialog(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSize.s14)
@@ -85,13 +86,18 @@ class StateRenderer extends StatelessWidget {
                   offset: Offset(AppSize.s0, AppSize.s12))
             ]
         ),
-        child: _getDialogContent(context),
+        child: _getDialogContent(context, children),
       ),
     );
   }
 
-  Widget _getDialogContent(BuildContext context){
-
+  Widget _getDialogContent(BuildContext context, List<Widget> children) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: children,
+    )
   }
 
   Widget _getAnimatedImage() {
