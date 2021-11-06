@@ -37,3 +37,37 @@ class RegisterViewModel extends BaseViewModel {
     super.dispose();
   }
 }
+
+abstract class RegisterViewModelInput {
+  register();
+
+  Sink get inputUserName;
+
+  Sink get inputMobileNumber;
+
+  Sink get inputEmail;
+
+  Sink get inputUPassword;
+
+  Sink get inputProfilePicture;
+}
+
+abstract class RegisterViewModelOutput {
+  Stream<bool> get outputIsUserNameValid;
+
+  Stream<String> get outputErrorUserName;
+
+  Stream<bool> get outputIsMobileNumberValid;
+
+  Stream<String> get outputErrorMobileNumber;
+
+  Stream<bool> get outputIsEmailValid;
+
+  Stream<String> get outputErrorEmail;
+
+  Stream<bool> get outputIsPasswordValid;
+
+  Stream<String> get outputErrorPassword;
+
+  Stream<File> get outputIsProfilePictureValid;
+}
