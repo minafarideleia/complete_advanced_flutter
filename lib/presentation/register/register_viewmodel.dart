@@ -49,6 +49,84 @@ class RegisterViewModel extends BaseViewModel
   }
 
   @override
+  setCountryCode(String countryCode) {
+    if (countryCode.isNotEmpty) {
+      // update register view object with countryCode value
+      registerViewObject = registerViewObject.copyWith(
+          countryMobileCode: countryCode); // using data class like kotlin
+    } else {
+      // reset countryCode value in register view object
+      registerViewObject = registerViewObject.copyWith(countryMobileCode: "");
+    }
+    _validate();
+  }
+
+  @override
+  setEmail(String email) {
+    if (isEmailValid(email)) {
+      // update register view object with email value
+      registerViewObject = registerViewObject.copyWith(
+          mobileNumber: email); // using data class like kotlin
+    } else {
+      // reset email value in register view object
+      registerViewObject = registerViewObject.copyWith(email: "");
+    }
+    _validate();
+  }
+
+  @override
+  setMobileNumber(String mobileNumber) {
+    if (_isMobileNumberValid(mobileNumber)) {
+      // update register view object with mobileNumber value
+      registerViewObject = registerViewObject.copyWith(
+          mobileNumber: mobileNumber); // using data class like kotlin
+    } else {
+      // reset mobileNumber value in register view object
+      registerViewObject = registerViewObject.copyWith(mobileNumber: "");
+    }
+    _validate();
+  }
+
+  @override
+  setPassword(String password) {
+    if (_isPasswordValid(password)) {
+      // update register view object with password value
+      registerViewObject = registerViewObject.copyWith(
+          password: password); // using data class like kotlin
+    } else {
+      // reset password value in register view object
+      registerViewObject = registerViewObject.copyWith(password: "");
+    }
+    _validate();
+  }
+
+  @override
+  setProfilePicture(File file) {
+    if (file.path.isNotEmpty) {
+      // update register view object with profilePicture value
+      registerViewObject = registerViewObject.copyWith(
+          profilePicture: file.path); // using data class like kotlin
+    } else {
+      // reset profilePicture value in register view object
+      registerViewObject = registerViewObject.copyWith(profilePicture: "");
+    }
+    _validate();
+  }
+
+  @override
+  setUserName(String userName) {
+    if (_isUserNameValid(userName)) {
+      // update register view object with username value
+      registerViewObject = registerViewObject.copyWith(
+          userName: userName); // using data class like kotlin
+    } else {
+      // reset username value in register view object
+      registerViewObject = registerViewObject.copyWith(userName: "");
+    }
+    _validate();
+  }
+
+  @override
   Sink get inputEmail => _emailStreamController.sink;
 
   @override
@@ -63,7 +141,14 @@ class RegisterViewModel extends BaseViewModel
   @override
   Sink get inputUserName => _userNameStreamController.sink;
 
+  @override
+  Sink get inputAllInputsValid => _isAllInputsValidStreamController.sink;
+
   // -- outputs
+
+  @override
+  Stream<bool> get outputIsAllInputsValid =>
+      _isAllInputsValidStreamController.stream.map((_) => _validateAllInputs());
 
   @override
   Stream<bool> get outputIsUserNameValid => _userNameStreamController.stream
@@ -122,76 +207,17 @@ class RegisterViewModel extends BaseViewModel
     return password.length >= 8;
   }
 
-  @override
-  setCountryCode(String countryCode) {
-    if (countryCode.isNotEmpty) {
-      // update register view object with countryCode value
-      registerViewObject = registerViewObject.copyWith(
-          countryMobileCode: countryCode); // using data class like kotlin
-    } else {
-      // reset countryCode value in register view object
-      registerViewObject = registerViewObject.copyWith(countryMobileCode: "");
-    }
+  bool _validateAllInputs() {
+    return registerViewObject.profilePicture.isNotEmpty &&
+        registerViewObject.email.isNotEmpty &&
+        registerViewObject.password.isNotEmpty &&
+        registerViewObject.mobileNumber.isNotEmpty &&
+        registerViewObject.userName.isNotEmpty &&
+        registerViewObject.countryMobileCode.isNotEmpty;
   }
 
-  @override
-  setEmail(String email) {
-    if (isEmailValid(email)) {
-      // update register view object with email value
-      registerViewObject = registerViewObject.copyWith(
-          mobileNumber: email); // using data class like kotlin
-    } else {
-      // reset email value in register view object
-      registerViewObject = registerViewObject.copyWith(email: "");
-    }
-  }
-
-  @override
-  setMobileNumber(String mobileNumber) {
-    if (_isMobileNumberValid(mobileNumber)) {
-      // update register view object with mobileNumber value
-      registerViewObject = registerViewObject.copyWith(
-          mobileNumber: mobileNumber); // using data class like kotlin
-    } else {
-      // reset mobileNumber value in register view object
-      registerViewObject = registerViewObject.copyWith(mobileNumber: "");
-    }
-  }
-
-  @override
-  setPassword(String password) {
-    if (_isPasswordValid(password)) {
-      // update register view object with password value
-      registerViewObject = registerViewObject.copyWith(
-          password: password); // using data class like kotlin
-    } else {
-      // reset password value in register view object
-      registerViewObject = registerViewObject.copyWith(password: "");
-    }
-  }
-
-  @override
-  setProfilePicture(File file) {
-    if (file.path.isNotEmpty) {
-      // update register view object with profilePicture value
-      registerViewObject = registerViewObject.copyWith(
-          profilePicture: file.path); // using data class like kotlin
-    } else {
-      // reset profilePicture value in register view object
-      registerViewObject = registerViewObject.copyWith(profilePicture: "");
-    }
-  }
-
-  @override
-  setUserName(String userName) {
-    if (_isUserNameValid(userName)) {
-      // update register view object with username value
-      registerViewObject = registerViewObject.copyWith(
-          userName: userName); // using data class like kotlin
-    } else {
-      // reset username value in register view object
-      registerViewObject = registerViewObject.copyWith(userName: "");
-    }
+  _validate() {
+    inputAllInputsValid.add(null);
   }
 }
 
@@ -219,6 +245,8 @@ abstract class RegisterViewModelInput {
   Sink get inputUPassword;
 
   Sink get inputProfilePicture;
+
+  Sink get inputAllInputsValid;
 }
 
 abstract class RegisterViewModelOutput {
@@ -239,4 +267,6 @@ abstract class RegisterViewModelOutput {
   Stream<String?> get outputErrorPassword;
 
   Stream<File> get outputIsProfilePictureValid;
+
+  Stream<bool> get outputIsAllInputsValid;
 }
