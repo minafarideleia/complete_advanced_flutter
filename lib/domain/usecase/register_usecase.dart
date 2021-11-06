@@ -20,12 +20,13 @@ class RegisterUseCase
 }
 
 class RegisterUseCaseInput {
+  String mobileNumber;
   String countryMobileCode;
   String userName;
   String email;
   String password;
   String profilePicture;
 
-  RegisterUseCaseInput(this.countryMobileCode, this.userName, this.email,
-      this.password, this.profilePicture);
+  RegisterUseCaseInput(this.mobileNumber, this.countryMobileCode, this.userName,
+      this.email, this.password, this.profilePicture);
 }
