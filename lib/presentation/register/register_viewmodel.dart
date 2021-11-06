@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:complete_advanced_flutter/app/functions.dart';
 import 'package:complete_advanced_flutter/domain/usecase/register_usecase.dart';
 import 'package:complete_advanced_flutter/presentation/base/baseviewmodel.dart';
+import 'package:complete_advanced_flutter/presentation/common/freezed_data_classes.dart';
 
 class RegisterViewModel extends BaseViewModel
     with RegisterViewModelInput, RegisterViewModelOutput {
@@ -25,6 +26,8 @@ class RegisterViewModel extends BaseViewModel
       StreamController<void>.broadcast();
 
   RegisterUseCase _registerUseCase;
+
+  var registerViewObject = RegisterObject("", "", "", "", "");
 
   RegisterViewModel(this._registerUseCase);
 
