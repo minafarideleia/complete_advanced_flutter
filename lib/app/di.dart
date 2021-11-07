@@ -6,8 +6,10 @@ import 'package:complete_advanced_flutter/data/repository/repository_impl.dart';
 import 'package:complete_advanced_flutter/domain/repository/repository.dart';
 import 'package:complete_advanced_flutter/domain/usecase/forgot_password_usecase.dart';
 import 'package:complete_advanced_flutter/domain/usecase/login_usecase.dart';
+import 'package:complete_advanced_flutter/domain/usecase/register_usecase.dart';
 import 'package:complete_advanced_flutter/presentation/forgot_password/forgot_password_viewmodel.dart';
 import 'package:complete_advanced_flutter/presentation/login/login_viewmodel.dart';
+import 'package:complete_advanced_flutter/presentation/register/register_viewmodel.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -59,5 +61,14 @@ initForgotPasswordModule() {
         () => ForgotPasswordUseCase(instance()));
     instance.registerFactory<ForgotPasswordViewModel>(
         () => ForgotPasswordViewModel(instance()));
+  }
+}
+
+initRegisterModule() {
+  if (!GetIt.I.isRegistered<RegisterUseCase>()) {
+    instance.registerFactory<RegisterUseCase>(
+        () => RegisterUseCase(instance()));
+    instance.registerFactory<RegisterViewModel>(
+        () => RegisterViewModel(instance()));
   }
 }
