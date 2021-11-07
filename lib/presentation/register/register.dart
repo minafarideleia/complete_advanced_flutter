@@ -179,6 +179,21 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 SizedBox(height: AppSize.s28),
                 Padding(
+                  padding: EdgeInsets.only(
+                      left: AppPadding.p28, right: AppPadding.p28),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: ColorManager.lightGrey)),
+                    child: GestureDetector(
+                      child: _getMediaWidget(),
+                      onTap: (){
+                        _showPicker(context);
+                      },
+                    ),
+                  ),
+                ),
+                SizedBox(height: AppSize.s28),
+                Padding(
                     padding: EdgeInsets.only(
                         left: AppPadding.p28, right: AppPadding.p28),
                     child: StreamBuilder<bool>(
