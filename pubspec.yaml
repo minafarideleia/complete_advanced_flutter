@@ -39,6 +39,7 @@ dependencies:
   freezed: ^0.14.2
   get_it: ^7.2.0
   lottie: ^1.2.1
+  country_code_picker: ^2.0.2
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,5 @@
 import 'package:complete_advanced_flutter/app/di.dart';
+import 'package:complete_advanced_flutter/data/mapper/mapper.dart';
 import 'package:complete_advanced_flutter/presentation/common/state_renderer/state_render_impl.dart';
 import 'package:complete_advanced_flutter/presentation/register/register_viewmodel.dart';
 import 'package:complete_advanced_flutter/presentation/resources/assets_manager.dart';
@@ -6,6 +7,7 @@ import 'package:complete_advanced_flutter/presentation/resources/color_manager.d
 import 'package:complete_advanced_flutter/presentation/resources/routes_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/strings_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/values_manager.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 
 class RegisterView extends StatefulWidget {
@@ -23,7 +25,7 @@ class _RegisterViewState extends State<RegisterView> {
       TextEditingController();
   TextEditingController _mobileNumberTextEditingController =
       TextEditingController();
-  TextEditingController _userEmailEditingController = TextEditingController();
+  TextEditingController _emailEditingController = TextEditingController();
   TextEditingController _passwordEditingController = TextEditingController();
 
   @override
@@ -42,8 +44,8 @@ class _RegisterViewState extends State<RegisterView> {
       _viewModel.setPassword(_passwordEditingController.text);
     });
 
-    _userEmailEditingController.addListener(() {
-      _viewModel.setEmail(_userEmailEditingController.text);
+    _emailEditingController.addListener(() {
+      _viewModel.setEmail(_emailEditingController.text);
     });
 
     _mobileNumberTextEditingController.addListener(() {
@@ -77,7 +79,7 @@ class _RegisterViewState extends State<RegisterView> {
 
   Widget _getContentWidget() {
     return Container(
-        padding: EdgeInsets.only(top: AppPadding.p100),
+        padding: EdgeInsets.only(top: AppPadding.p60),
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -97,6 +99,63 @@ class _RegisterViewState extends State<RegisterView> {
                           decoration: InputDecoration(
                               hintText: AppStrings.username,
                               labelText: AppStrings.username,
+                              errorText: snapshot.data));
+                    },
+                  ),
+                ),
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: AppPadding.p28,
+                        right: AppPadding.p28,
+                        bottom: AppPadding.p28),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            flex: 1,
+                            child: CountryCodePicker(
+                              onChanged: (country) {
+                                // update view model with the selected code
+                                _viewModel
+                                    .setCountryCode(country.dialCode ?? EMPTY);
+                              },
+                              initialSelection: "+33",
+                              showCountryOnly: true,
+                              showOnlyCountryWhenClosed: true,
+                              favorite: ["+966", "+02", "+39"],
+                            )),
+                        Expanded(
+                            flex: 3,
+                            child: StreamBuilder<String?>(
+                              stream: _viewModel.outputErrorMobileNumber,
+                              builder: (context, snapshot) {
+                                return TextFormField(
+                                    keyboardType: TextInputType.phone,
+                                    controller:
+                                        _mobileNumberTextEditingController,
+                                    decoration: InputDecoration(
+                                        hintText: AppStrings.mobileNumber,
+                                        labelText: AppStrings.mobileNumber,
+                                        errorText: snapshot.data));
+                              },
+                            ))
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: AppSize.s28),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: AppPadding.p28, right: AppPadding.p28),
+                  child: StreamBuilder<String?>(
+                    stream: _viewModel.outputErrorEmail,
+                    builder: (context, snapshot) {
+                      return TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          controller: _emailEditingController,
+                          decoration: InputDecoration(
+                              hintText: AppStrings.emailHint,
+                              labelText: AppStrings.emailHint,
                               errorText: snapshot.data));
                     },
                   ),
