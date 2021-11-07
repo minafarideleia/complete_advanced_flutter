@@ -15,6 +15,7 @@ class AppStrings {
       "Tut app is an awesome flutter application using clean architecture #4";
   static const String skip = "Skip";
   static const String username = "Username";
+  static const String mobileNumber = "Mobile Number";
   static const String usernameError = "Username is wrong";
   static const String passwordError = "password is wrong";
   static const String password = "Password";
