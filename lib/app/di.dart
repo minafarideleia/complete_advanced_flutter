@@ -12,6 +12,7 @@ import 'package:complete_advanced_flutter/presentation/login/login_viewmodel.dar
 import 'package:complete_advanced_flutter/presentation/register/register_viewmodel.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app_prefs.dart';
@@ -66,9 +67,10 @@ initForgotPasswordModule() {
 
 initRegisterModule() {
   if (!GetIt.I.isRegistered<RegisterUseCase>()) {
-    instance.registerFactory<RegisterUseCase>(
-        () => RegisterUseCase(instance()));
+    instance
+        .registerFactory<RegisterUseCase>(() => RegisterUseCase(instance()));
     instance.registerFactory<RegisterViewModel>(
         () => RegisterViewModel(instance()));
+    instance.registerFactory<ImagePicker>(() => ImagePicker());
   }
 }
