@@ -12,6 +12,7 @@ import 'package:complete_advanced_flutter/presentation/resources/values_manager.
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class RegisterView extends StatefulWidget {
 
 class _RegisterViewState extends State<RegisterView> {
   RegisterViewModel _viewModel = instance<RegisterViewModel>();
+  ImagePicker picker = instance<ImagePicker>();
   final _formKey = GlobalKey<FormState>();
 
   TextEditingController _userNameTextEditingController =
@@ -274,6 +276,47 @@ class _RegisterViewState extends State<RegisterView> {
     } else {
       return Container();
     }
+  }
+
+  _showPicker(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return SafeArea(
+            child: Wrap(
+              children: [
+                ListTile(
+                  trailing: Icon(Icons.arrow_forward),
+                  leading: Icon(Icons.camera),
+                  title: Text(AppStrings.photoGalley),
+                  onTap: () {
+                    _imageFormGallery();
+                    Navigator.of(context).pop();
+                  },
+                ),
+                ListTile(
+                  trailing: Icon(Icons.arrow_forward),
+                  leading: Icon(Icons.camera_alt_rounded),
+                  title: Text(AppStrings.photoCamera),
+                  onTap: () {
+                    _imageFormCamera();
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            ),
+          );
+        });
+  }
+
+  _imageFormGallery() async {
+    var image = await picker.pickImage(source: ImageSource.gallery);
+    _viewModel.setProfilePicture(File(image?.path ?? ""));
+  }
+
+  _imageFormCamera() async {
+    var image = await picker.pickImage(source: ImageSource.camera);
+    _viewModel.setProfilePicture(File(image?.path ?? ""));
   }
 
   @override
