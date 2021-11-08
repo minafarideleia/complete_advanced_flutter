@@ -29,4 +29,5 @@ class AppStrings {
   static const String invalidEmail = "Invalid Email";
   static const String resetPassword = "Reset Password";
   static const String success = "Success";
+  static const String profilePicture = "Profile picture";
 }
