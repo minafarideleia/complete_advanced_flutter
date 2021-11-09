@@ -14,8 +14,13 @@ class RegisterUseCase
   @override
   Future<Either<Failure, Authentication>> execute(
       RegisterUseCaseInput input) async {
-    return await _repository.register(RegisterRequest(input.countryMobileCode,
-        input.userName, input.email, input.password, input.profilePicture));
+    return await _repository.register(RegisterRequest(
+        input.countryMobileCode,
+        input.userName,
+        input.email,
+        input.password,
+        input.profilePicture,
+        input.mobileNumber));
   }
 }
 
