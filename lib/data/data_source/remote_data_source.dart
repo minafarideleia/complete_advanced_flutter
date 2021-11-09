@@ -34,6 +34,7 @@ class RemoteDataSourceImplementer implements RemoteDataSource {
         registerRequest.userName,
         registerRequest.email,
         registerRequest.password,
-        registerRequest.profilePicture);
+        registerRequest.mobileNumber,
+        "");
   }
 }
