@@ -1,4 +1,4 @@
-import 'package:complete_advanced_flutter/presentation/main/home_page.dart';
+import 'package:complete_advanced_flutter/presentation/main/home/home_page.dart';
 import 'package:complete_advanced_flutter/presentation/main/notifications_page.dart';
 import 'package:complete_advanced_flutter/presentation/main/search_page.dart';
 import 'package:complete_advanced_flutter/presentation/main/settings_page.dart';
