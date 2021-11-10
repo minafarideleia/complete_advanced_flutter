@@ -41,6 +41,7 @@ dependencies:
   lottie: ^1.2.1
   country_code_picker: ^2.0.2
   image_picker: ^0.8.4+4
+  rxdart: ^0.27.2
 
 dev_dependencies:
   flutter_test:
