@@ -38,7 +38,7 @@ class DeviceInfo {
 }
 
 class Service {
-  String id;
+  int id;
   String title;
   String image;
 
@@ -46,7 +46,7 @@ class Service {
 }
 
 class Store {
-  String id;
+  int id;
   String title;
   String image;
 
@@ -54,7 +54,7 @@ class Store {
 }
 
 class BannerAd {
-  String id;
+  int id;
   String title;
   String image;
   String link;

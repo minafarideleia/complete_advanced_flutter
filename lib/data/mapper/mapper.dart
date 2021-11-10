@@ -36,3 +36,24 @@ extension ForgotPasswordResponseMapper on ForgotPasswordResponse? {
     return this?.support?.orEmpty() ?? EMPTY;
   }
 }
+
+extension ServiceResponseMapper on ServiceResponse? {
+  Service toDomain() {
+    return Service(this?.id?.orZero() ?? ZERO, this?.title?.orEmpty() ?? EMPTY,
+        this?.image?.orEmpty() ?? EMPTY);
+  }
+}
+
+extension StoreResponseMapper on StoreResponse? {
+  Store toDomain() {
+    return Store(this?.id?.orZero() ?? ZERO, this?.title?.orEmpty() ?? EMPTY,
+        this?.image?.orEmpty() ?? EMPTY);
+  }
+}
+
+extension BannerResponseMapper on BannerResponse? {
+  BannerAd toDomain() {
+    return BannerAd(this?.id?.orZero() ?? ZERO, this?.title?.orEmpty() ?? EMPTY,
+        this?.image?.orEmpty() ?? EMPTY, this?.link?.orEmpty() ?? EMPTY);
+  }
+}
