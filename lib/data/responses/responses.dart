@@ -111,11 +111,11 @@ class StoreResponse {
   StoreResponse(this.id, this.title, this.image);
 
 // toJson
-  Map<String, dynamic> toJson() => _$StoresResponseToJson(this);
+  Map<String, dynamic> toJson() => _$StoreResponseToJson(this);
 
 //fromJson
   factory StoreResponse.fromJson(Map<String, dynamic> json) =>
-      _$StoresResponseFromJson(json);
+      _$StoreResponseFromJson(json);
 }
 
 @JsonSerializable()
@@ -132,11 +132,11 @@ class BannerResponse {
   BannerResponse(this.id, this.title, this.image, this.link);
 
 // toJson
-  Map<String, dynamic> toJson() => _$BannersResponseToJson(this);
+  Map<String, dynamic> toJson() => _$BannerResponseToJson(this);
 
 //fromJson
   factory BannerResponse.fromJson(Map<String, dynamic> json) =>
-      _$BannersResponseFromJson(json);
+      _$BannerResponseFromJson(json);
 }
 
 @JsonSerializable()

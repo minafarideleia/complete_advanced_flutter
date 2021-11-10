@@ -29,4 +29,7 @@ abstract class AppServiceClient {
     @Field("mobile_number") String mobilNumber,
     @Field("profile_picture") String profilePicture,
   );
+
+  @GET("/home")
+  Future<HomeResponse> getHome();
 }
