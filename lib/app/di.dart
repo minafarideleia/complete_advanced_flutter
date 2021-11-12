@@ -9,10 +9,12 @@ import 'package:complete_advanced_flutter/domain/usecase/forgot_password_usecase
 import 'package:complete_advanced_flutter/domain/usecase/home_usecase.dart';
 import 'package:complete_advanced_flutter/domain/usecase/login_usecase.dart';
 import 'package:complete_advanced_flutter/domain/usecase/register_usecase.dart';
+import 'package:complete_advanced_flutter/domain/usecase/store_details_usecase.dart';
 import 'package:complete_advanced_flutter/presentation/forgot_password/forgot_password_viewmodel.dart';
 import 'package:complete_advanced_flutter/presentation/login/login_viewmodel.dart';
 import 'package:complete_advanced_flutter/presentation/main/home/home_viewmodel.dart';
 import 'package:complete_advanced_flutter/presentation/register/register_viewmodel.dart';
+import 'package:complete_advanced_flutter/presentation/store_details/store_details_viewmodel.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
@@ -86,5 +88,14 @@ initHomeModule() {
   if (!GetIt.I.isRegistered<HomeUseCase>()) {
     instance.registerFactory<HomeUseCase>(() => HomeUseCase(instance()));
     instance.registerFactory<HomeViewModel>(() => HomeViewModel(instance()));
+  }
+}
+
+initStoreDetailsModule() {
+  if (!GetIt.I.isRegistered<StoreDetailsUseCase>()) {
+    instance.registerFactory<StoreDetailsUseCase>(
+            () => StoreDetailsUseCase(instance()));
+    instance.registerFactory<StoreDetailsViewModel>(
+            () => StoreDetailsViewModel(instance()));
   }
 }
