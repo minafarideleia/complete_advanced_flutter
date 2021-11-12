@@ -73,7 +73,7 @@ extension HomeResponseMapper on HomeResponse? {
             .toList();
 
     List<BannerAd> mappedBanners =
-        (this?.data?.stores?.map((bannerAd) => bannerAd.toDomain()) ??
+        (this?.data?.banners?.map((bannerAd) => bannerAd.toDomain()) ??
                 Iterable.empty())
             .cast<BannerAd>()
             .toList();
