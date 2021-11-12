@@ -145,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                             child: Image.network(
                               service.image,
                               fit: BoxFit.cover,
-                              width: AppSize.s100,
+                              width: AppSize.s120,
                               height: AppSize.s100,
                             ),
                           ),
