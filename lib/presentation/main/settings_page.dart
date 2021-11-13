@@ -1,4 +1,8 @@
+import 'package:complete_advanced_flutter/app/app_prefs.dart';
+import 'package:complete_advanced_flutter/app/di.dart';
+import 'package:complete_advanced_flutter/data/data_source/local_data_source.dart';
 import 'package:complete_advanced_flutter/presentation/resources/assets_manager.dart';
+import 'package:complete_advanced_flutter/presentation/resources/routes_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/strings_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +16,9 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  AppPreferences _appPreferences = instance<AppPreferences>();
+  LocalDataSource _localDataSource = instance<LocalDataSource>();
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -24,7 +31,9 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           leading: SvgPicture.asset(ImageAssets.changeLangIc),
           trailing: SvgPicture.asset(ImageAssets.settingsRightArrowIc),
-          onTap: () {},
+          onTap: () {
+            _changeLanguage();
+          },
         ),
         ListTile(
           title: Text(
@@ -33,7 +42,9 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           leading: SvgPicture.asset(ImageAssets.contactUsIc),
           trailing: SvgPicture.asset(ImageAssets.settingsRightArrowIc),
-          onTap: () {},
+          onTap: () {
+            _contactUs();
+          },
         ),
         ListTile(
           title: Text(
@@ -42,7 +53,9 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           leading: SvgPicture.asset(ImageAssets.inviteFriendsIc),
           trailing: SvgPicture.asset(ImageAssets.settingsRightArrowIc),
-          onTap: () {},
+          onTap: () {
+            _inviteFriends();
+          },
         ),
         ListTile(
           title: Text(
@@ -51,9 +64,29 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           leading: SvgPicture.asset(ImageAssets.logoutIc),
           trailing: SvgPicture.asset(ImageAssets.settingsRightArrowIc),
-          onTap: () {},
+          onTap: () {
+            _logout();
+          },
         )
       ],
     );
+  }
+
+  void _changeLanguage() {
+    // i will apply localisation later
+  }
+
+  void _contactUs() {
+    // its a task for you to open any web bage with dummy content
+  }
+
+  void _inviteFriends() {
+    // its a task to share app name with friends
+  }
+
+  void _logout() {
+    _appPreferences.logout(); // clear login flag from app prefs
+    _localDataSource.clearCache();
+    Navigator.pushReplacementNamed(context, Routes.loginRoute);
   }
 }
