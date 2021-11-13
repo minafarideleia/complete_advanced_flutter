@@ -6,6 +6,7 @@ import 'package:complete_advanced_flutter/presentation/resources/color_manager.d
 import 'package:complete_advanced_flutter/presentation/resources/strings_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class MainView extends StatefulWidget {
   const MainView({Key? key}) : super(key: key);
@@ -22,12 +23,12 @@ class _MainViewState extends State<MainView> {
     SettingsPage()
   ];
   List<String> titles = [
-    AppStrings.home,
-    AppStrings.search,
-    AppStrings.notifications,
-    AppStrings.settings,
+    AppStrings.home.tr(),
+    AppStrings.search.tr(),
+    AppStrings.notifications.tr(),
+    AppStrings.settings.tr(),
   ];
-  var _title = AppStrings.home;
+  var _title = AppStrings.home.tr();
   var _currentIndex = 0;
 
   @override
@@ -51,9 +52,9 @@ class _MainViewState extends State<MainView> {
           onTap: onTap,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home), label: AppStrings.home),
+                icon: Icon(Icons.home), label: AppStrings.home.tr()),
             BottomNavigationBarItem(
-                icon: Icon(Icons.search), label: AppStrings.search),
+                icon: Icon(Icons.search), label: AppStrings.search.tr()),
             BottomNavigationBarItem(
                 icon: Icon(Icons.notifications),
                 label: AppStrings.notifications),
