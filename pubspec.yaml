@@ -73,6 +73,11 @@ flutter:
      - assets/images/right_arrow_ic.svg
      - assets/images/solid_circle_ic.svg
      - assets/images/photo_camera_ic.svg
+     - assets/images/settings_right_arrow_ic.svg
+     - assets/images/change_lang_ic.svg
+     - assets/images/contact_us_ic.svg
+     - assets/images/invite_friends_ic.svg
+     - assets/images/logout_ic.svg
      - assets/json/loading.json
      - assets/json/error.json
      - assets/json/empty.json
