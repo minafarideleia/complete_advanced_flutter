@@ -1,4 +1,5 @@
 import 'package:complete_advanced_flutter/presentation/resources/language_manager.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const String PREFS_KEY_LANG = "PREFS_KEY_LANG";
@@ -20,6 +21,30 @@ class AppPreferences {
     }
   }
 
+  Future<void> setLanguageChanged() async {
+    String currentLanguage = await getAppLanguage();
+    if (currentLanguage == LanguageType.ARABIC.getValue()) {
+      // save prefs with english lang
+      _sharedPreferences.setString(
+          PREFS_KEY_LANG, LanguageType.ENGLISH.getValue());
+    } else {
+      // save prefs with arabic lang
+      _sharedPreferences.setString(
+          PREFS_KEY_LANG, LanguageType.ARABIC.getValue());
+    }
+  }
+
+  Future<Locale> getLocal() async {
+    String currentLanguage = await getAppLanguage();
+    if (currentLanguage == LanguageType.ARABIC.getValue()) {
+      // return arabic local
+      return ARABIC_LOCAL;
+    } else {
+      // return english local
+      return ENGLISH_LOCAL;
+    }
+  }
+
   Future<void> setOnBoardingScreenViewed() async {
     _sharedPreferences.setBool(PREFS_KEY_ONBOARDING_SCREEN, true);
   }
@@ -36,7 +61,7 @@ class AppPreferences {
     return _sharedPreferences.getBool(PREFS_KEY_IS_USER_LOGGED_IN) ?? false;
   }
 
-  Future<void> logout() async{
+  Future<void> logout() async {
     _sharedPreferences.remove(PREFS_KEY_IS_USER_LOGGED_IN);
   }
 }
