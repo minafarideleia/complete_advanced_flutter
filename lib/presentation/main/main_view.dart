@@ -57,9 +57,9 @@ class _MainViewState extends State<MainView> {
                 icon: Icon(Icons.search), label: AppStrings.search.tr()),
             BottomNavigationBarItem(
                 icon: Icon(Icons.notifications),
-                label: AppStrings.notifications),
+                label: AppStrings.notifications.tr()),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: AppStrings.settings),
+                icon: Icon(Icons.settings), label: AppStrings.settings.tr()),
           ],
         ),
       ),
