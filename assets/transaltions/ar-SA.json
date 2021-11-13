@@ -53,5 +53,7 @@
   "change_language": "تغيير اللغة",
   "contact_us": "اتصل بنا",
   "invite_your_friends": "قم بدعوة أصدقائك",
-  "logout": "تسجيل الخروج"
+  "logout": "تسجيل الخروج",
+  "reset_password": "اعاده تعيين كلمه السر"
+
 }

@@ -9,7 +9,7 @@
   "on_boarding_desc3": "Tut app is an awesome flutter application using clean architecture #3",
   "on_boarding_desc4": "Tut app is an awesome flutter application using clean architecture #4",
   "skip": "Skip",
-  "invalid_password": "Password should be 8 characters with at least 1 Upper Case, 1 lower case, and 1 numeric character",
+  "invalid_password": "password is wrong",
   "username_hint": "UserName",
   "password_hint": "Password",
   "login_button": "Login",
@@ -24,12 +24,12 @@
   "invalid_email": "Invalid Email",
   "register": "Register",
   "already_have_account": "Already have an account? login",
-  "upload_profile_picture": "Upload your profile picture",
-  "photo_gallery": "Photo Library",
-  "camera": "Camera",
+  "upload_profile_pictuSearchre": "profile picture",
+  "photo_gallery": "Photo from gallery",
+  "camera": "Photo from camera",
   "mobile_number_hint": "Mobile Number",
   "email_hint": "Email",
-  "notification": "Notification",
+  "notification": "Notifications",
   "search": "Search",
   "home": "Home",
   "settings": "Settings",
@@ -54,5 +54,6 @@
   "change_language": "Change Language",
   "contact_us": "Contact Us",
   "invite_your_friends": "Invite Your Friends",
-  "logout": "Logout"
+  "logout": "Logout",
+  "reset_password": "Reset Password"
 }
