@@ -94,8 +94,18 @@ initHomeModule() {
 initStoreDetailsModule() {
   if (!GetIt.I.isRegistered<StoreDetailsUseCase>()) {
     instance.registerFactory<StoreDetailsUseCase>(
-            () => StoreDetailsUseCase(instance()));
+        () => StoreDetailsUseCase(instance()));
     instance.registerFactory<StoreDetailsViewModel>(
-            () => StoreDetailsViewModel(instance()));
+        () => StoreDetailsViewModel(instance()));
   }
+}
+
+resetModules() {
+  instance.reset(dispose: false);
+  initAppModule();
+  initHomeModule();
+  initLoginModule();
+  initRegisterModule();
+  initForgotPasswordModule();
+  initStoreDetailsModule();
 }
