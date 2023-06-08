@@ -1,3 +1,8 @@
+# cover of this lecture 
+`basic singletone class`
+### learning topics 
+- className._internal() 
+- 
 # complete_advanced_flutter
 
 A new Flutter application.
