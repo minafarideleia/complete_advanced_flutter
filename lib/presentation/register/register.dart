@@ -64,7 +64,7 @@ class _RegisterViewState extends State<RegisterView> {
     _viewModel.isUserLoggedInSuccessfullyStreamController.stream
         .listen((isSuccessLoggedIn) {
       // navigate to main screen
-      SchedulerBinding.instance?.addPostFrameCallback((_) {
+      SchedulerBinding.instance.addPostFrameCallback((_) {
         _appPreferences.setIsUserLoggedIn();
         Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
       });
@@ -248,7 +248,7 @@ class _RegisterViewState extends State<RegisterView> {
                       Navigator.of(context).pop();
                     },
                     child: Text(AppStrings.haveAccount,
-                        style: Theme.of(context).textTheme.subtitle2).tr(),
+                        style: Theme.of(context).textTheme.titleSmall).tr(),
                   ),
                 )
               ],

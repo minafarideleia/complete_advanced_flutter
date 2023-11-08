@@ -37,7 +37,7 @@ class _MainViewState extends State<MainView> {
       appBar: AppBar(
         title: Text(
           _title,
-          style: Theme.of(context).textTheme.headline2,
+          style: Theme.of(context).textTheme.displayMedium,
         ),
       ),
       body: pages[_currentIndex],

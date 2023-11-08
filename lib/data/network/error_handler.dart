@@ -24,7 +24,7 @@ class ErrorHandler implements Exception {
   late Failure failure;
 
   ErrorHandler.handle(dynamic error) {
-    if (error is DioError) {
+    if (error is DioException) {
       // dio error so its error from response of the API
       failure = _handleError(error);
     } else {
@@ -33,15 +33,15 @@ class ErrorHandler implements Exception {
     }
   }
 
-  Failure _handleError(DioError error) {
+  Failure _handleError(DioException error) {
     switch (error.type) {
-      case DioErrorType.connectTimeout:
+      case DioExceptionType.connectionError:
         return DataSource.CONNECT_TIMEOUT.getFailure();
-      case DioErrorType.sendTimeout:
+      case DioExceptionType.sendTimeout:
         return DataSource.SEND_TIMEOUT.getFailure();
-      case DioErrorType.receiveTimeout:
+      case DioExceptionType.receiveTimeout:
         return DataSource.RECEIVE_TIMEOUT.getFailure();
-      case DioErrorType.response:
+      case DioExceptionType.badResponse:
         switch (error.response?.statusCode) {
           case ResponseCode.BAD_REQUEST:
             return DataSource.BAD_REQUEST.getFailure();
@@ -56,9 +56,11 @@ class ErrorHandler implements Exception {
           default:
             return DataSource.DEFAULT.getFailure();
         }
-      case DioErrorType.cancel:
+      case DioExceptionType.cancel:
         return DataSource.CANCEL.getFailure();
-      case DioErrorType.other:
+      case DioExceptionType.unknown:
+        return DataSource.DEFAULT.getFailure();
+      default:
         return DataSource.DEFAULT.getFailure();
     }
   }
@@ -68,11 +70,13 @@ extension DataSourceExtension on DataSource {
   Failure getFailure() {
     switch (this) {
       case DataSource.BAD_REQUEST:
-        return Failure(ResponseCode.BAD_REQUEST, ResponseMessage.BAD_REQUEST.tr());
+        return Failure(
+            ResponseCode.BAD_REQUEST, ResponseMessage.BAD_REQUEST.tr());
       case DataSource.FORBIDDEN:
         return Failure(ResponseCode.FORBIDDEN, ResponseMessage.FORBIDDEN.tr());
       case DataSource.UNAUTHORISED:
-        return Failure(ResponseCode.UNAUTHORISED, ResponseMessage.UNAUTHORISED.tr());
+        return Failure(
+            ResponseCode.UNAUTHORISED, ResponseMessage.UNAUTHORISED.tr());
       case DataSource.NOT_FOUND:
         return Failure(ResponseCode.NOT_FOUND, ResponseMessage.NOT_FOUND.tr());
       case DataSource.INTERNAL_SERVER_ERROR:
@@ -87,9 +91,11 @@ extension DataSourceExtension on DataSource {
         return Failure(
             ResponseCode.RECEIVE_TIMEOUT, ResponseMessage.RECEIVE_TIMEOUT.tr());
       case DataSource.SEND_TIMEOUT:
-        return Failure(ResponseCode.SEND_TIMEOUT, ResponseMessage.SEND_TIMEOUT.tr());
+        return Failure(
+            ResponseCode.SEND_TIMEOUT, ResponseMessage.SEND_TIMEOUT.tr());
       case DataSource.CACHE_ERROR:
-        return Failure(ResponseCode.CACHE_ERROR, ResponseMessage.CACHE_ERROR.tr());
+        return Failure(
+            ResponseCode.CACHE_ERROR, ResponseMessage.CACHE_ERROR.tr());
       case DataSource.NO_INTERNET_CONNECTION:
         return Failure(ResponseCode.NO_INTERNET_CONNECTION,
             ResponseMessage.NO_INTERNET_CONNECTION.tr());

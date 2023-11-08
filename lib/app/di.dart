@@ -15,7 +15,7 @@ import 'package:complete_advanced_flutter/presentation/login/login_viewmodel.dar
 import 'package:complete_advanced_flutter/presentation/main/home/home_viewmodel.dart';
 import 'package:complete_advanced_flutter/presentation/register/register_viewmodel.dart';
 import 'package:complete_advanced_flutter/presentation/store_details/store_details_viewmodel.dart';
-import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:data_connection_checker_nulls/data_connection_checker_nulls.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
