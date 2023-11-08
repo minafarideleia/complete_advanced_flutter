@@ -18,29 +18,29 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: '>=2.19.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^0.22.0
-  retrofit: ^2.0.1
-  analyzer: ^1.7.0
-  dio: ^4.0.0
-  json_serializable: ^4.1.4
+  flutter_svg: ^2.0.9
+  retrofit: ^4.0.3
+  analyzer: ^6.2.0
+  dio: ^5.3.3
+  json_serializable: ^6.7.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   dartz: ^0.10.0
-  data_connection_checker: ^0.3.4
+  data_connection_checker_nulls: ^0.0.2
   pretty_dio_logger: ^1.2.0-beta-1
   shared_preferences: ^2.0.8
   device_info: ^2.0.2
-  freezed: ^0.14.2
+  freezed: ^2.4.5
   get_it: ^7.2.0
-  lottie: ^1.2.1
-  country_code_picker: ^2.0.2
-  image_picker: ^0.8.4+4
+  lottie: ^2.7.0
+  country_code_picker: ^3.0.0
+  image_picker: ^1.0.4
   rxdart: ^0.27.2
   carousel_slider: ^4.0.0
   easy_localization: ^3.0.0
@@ -49,7 +49,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  retrofit_generator: ^2.0.1
+  retrofit_generator: ^8.0.3
   build_runner: ^2.1.4
 
 # For information on the generic Dart part of this file, see the

@@ -14,7 +14,7 @@ ThemeData getApplicationTheme() {
       // ripple color
       splashColor: ColorManager.primaryOpacity70,
       // will be used incase of disabled button for example
-      accentColor: ColorManager.grey,
+      hintColor: ColorManager.grey,
       // card view theme
       cardTheme: CardTheme(
           color: ColorManager.white,
@@ -38,28 +38,27 @@ ThemeData getApplicationTheme() {
       // elevated button theme
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-              textStyle: getRegularStyle(color: ColorManager.white),
-              primary: ColorManager.primary,
+              textStyle: getRegularStyle(color: ColorManager.white), backgroundColor: ColorManager.primary,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppSize.s12)))),
 
       // Text theme
       textTheme: TextTheme(
-          headline1: getSemiBoldStyle(
+          displayLarge: getSemiBoldStyle(
               color: ColorManager.darkGrey, fontSize: FontSize.s16),
-          headline2: getRegularStyle(
+          displayMedium: getRegularStyle(
               color: ColorManager.white, fontSize: FontSize.s16),
-          headline3:
+          displaySmall:
               getBoldStyle(color: ColorManager.primary, fontSize: FontSize.s16),
-          headline4: getRegularStyle(
+          headlineMedium: getRegularStyle(
               color: ColorManager.primary, fontSize: FontSize.s14),
-          subtitle1: getMediumStyle(
+          titleMedium: getMediumStyle(
               color: ColorManager.lightGrey, fontSize: FontSize.s14),
-          subtitle2: getMediumStyle(
+          titleSmall: getMediumStyle(
               color: ColorManager.primary, fontSize: FontSize.s14),
-          bodyText2: getMediumStyle(color: ColorManager.lightGrey),
-          caption: getRegularStyle(color: ColorManager.grey1),
-          bodyText1: getRegularStyle(color: ColorManager.grey)),
+          bodyMedium: getMediumStyle(color: ColorManager.lightGrey),
+          bodySmall: getRegularStyle(color: ColorManager.grey1),
+          bodyLarge: getRegularStyle(color: ColorManager.grey)),
       // input decoration theme (text form field)
 
       inputDecorationTheme: InputDecorationTheme(

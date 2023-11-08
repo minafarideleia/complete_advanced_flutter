@@ -104,13 +104,13 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
             left: AppPadding.p12,
             right: AppPadding.p12,
             bottom: AppPadding.p2),
-        child: Text(title, style: Theme.of(context).textTheme.headline3));
+        child: Text(title, style: Theme.of(context).textTheme.displaySmall));
   }
 
   Widget _getInfoText(String info) {
     return Padding(
       padding: const EdgeInsets.all(AppSize.s12),
-      child: Text(info, style: Theme.of(context).textTheme.bodyText2),
+      child: Text(info, style: Theme.of(context).textTheme.bodyMedium),
     );
   }
 

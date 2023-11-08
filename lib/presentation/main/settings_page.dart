@@ -32,7 +32,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ListTile(
           title: Text(
             AppStrings.changeLanguage,
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headlineMedium,
           ).tr(),
           leading: SvgPicture.asset(ImageAssets.changeLangIc),
           trailing: Transform(
@@ -47,7 +47,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ListTile(
           title: Text(
             AppStrings.contactUs,
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headlineMedium,
           ).tr(),
           leading: SvgPicture.asset(ImageAssets.contactUsIc),
           trailing: Transform(
@@ -62,7 +62,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ListTile(
           title: Text(
             AppStrings.inviteYourFriends,
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headlineMedium,
           ).tr(),
           leading: SvgPicture.asset(ImageAssets.inviteFriendsIc),
           trailing: Transform(
@@ -77,7 +77,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ListTile(
           title: Text(
             AppStrings.logout,
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headlineMedium,
           ).tr(),
           leading: SvgPicture.asset(ImageAssets.logoutIc),
           trailing: Transform(

@@ -62,7 +62,6 @@ class _HomePageState extends State<HomePage> {
               _getStoresWidget(snapshot.data?.stores),
             ],
           );
-          ;
         });
   }
 
@@ -75,7 +74,7 @@ class _HomePageState extends State<HomePage> {
           bottom: AppPadding.p2),
       child: Text(
         title,
-        style: Theme.of(context).textTheme.headline3,
+        style: Theme.of(context).textTheme.displaySmall,
       ),
     );
   }
